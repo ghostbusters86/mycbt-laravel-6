@@ -16,3 +16,7 @@ Route::layout('layouts.base')
     ->group(function () {
         Route::livewire('/', 'admin.index');
     });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
