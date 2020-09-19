@@ -158,9 +158,12 @@
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-power"></i>Logout</a>
+                                    <a href="{{ route('admin.logoutAdmin') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        <i class="zmdi zmdi-power"></i>{{ __('Keluar') }}</a>
                                 </div>
+                                <form id="logout-form" action="{{ route('admin.logoutAdmin') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>

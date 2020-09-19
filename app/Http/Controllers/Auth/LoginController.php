@@ -33,8 +33,12 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+    public function __construct() {
+        $this->middleware('guest')->except(['logout', 'logoutUser']);
+    }
+
+    public function logoutUser() {
+        Auth::guard('web')->logout();
+        return redirect('/login');
     }
 }

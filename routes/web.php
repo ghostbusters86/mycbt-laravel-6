@@ -10,12 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::layout('layouts.base')
-    ->prefix('admin')
+Route::prefix('admin')
+    ->name('admin.')
     ->group(function () {
-        Route::livewire('/', 'admin.index');
+        // Auth Admin
+        Route::namespace('AuthAdmin')
+            ->group(function () {
+                Route::get('/login', 'LoginController@loginForm')
+                    ->name('loginForm');
+                Route::post('/login', 'LoginController@loginSubmit')
+                    ->name('loginSubmit');
+                Route::post('/logout', 'LoginController@logoutAdmin')
+                    ->name('logoutAdmin');
+            });
+
+        Route::layout('layouts.base')
+        ->middleware(['auth:admin'])
+            ->group(function () {
+                Route::livewire('/', 'admin.index')
+                    ->name('index');
+            });
     });
+
 
 Auth::routes();
 
