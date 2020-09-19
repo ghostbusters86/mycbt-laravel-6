@@ -25,13 +25,12 @@ Route::prefix('admin')
             });
 
         Route::layout('layouts.base')
-        ->middleware(['auth:admin'])
+            ->middleware(['auth:admin'])
             ->group(function () {
                 Route::livewire('/', 'admin.index')
                     ->name('index');
             });
     });
-
 
 Auth::routes();
 
