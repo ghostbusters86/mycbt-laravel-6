@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use SoftDeletes;
+
+    public function users() {
+        return $this->belongsToMany('App\User');
+    }
 }
