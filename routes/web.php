@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::layout('layouts.base')
+    ->prefix('admin')
+    ->group(function () {
+        Route::livewire('/', 'admin.index');
+    });
