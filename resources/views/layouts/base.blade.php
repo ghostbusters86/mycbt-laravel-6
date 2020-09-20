@@ -1,57 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="fixed sidebar-left-collapsed">
 <head>
-    {{-- META/TITLE/CSS --}}
+    {{-- start: meta --}}
         @include('components._head')
         @livewireStyles
         @yield('css')
-    {{-- END META/TITLE/CSS --}}
+    {{-- end: meta --}}
 </head>
-<body class="animsition">
-    <div class="page-wrapper">
-        {{-- HEADER MOBILE --}}
-            @include('components._header')
-        {{-- END HEADER MOBILE --}}
+	<body>
+		<section class="body">
+			{{-- start: header --}}
+			    @include('components._header')
+			{{-- end: header --}}
 
-        {{-- MENU SIDEBAR --}}
-            @include('components._sidebar')
-        {{-- END MENU SIDEBAR --}}
+			<div class="inner-wrapper">
+				{{-- start: sidebar --}}
+                    @include('components._sidebar')
+				{{-- end: sidebar --}}
 
-        {{-- PAGE CONTAINER --}}
-        <div class="page-container">
-            {{-- HEADER DESKTOP --}}
-                @include('components._header-desktop')
-            {{-- END HEADER DESKTOP --}}
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>@yield('title-2')</h2>
+					</header>
+					{{-- start: page --}}
+                        @yield('content')
+					{{-- end: page --}}
+				</section>
+			</div>
 
-            {{-- MAIN CONTENT --}}
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        {{-- PAGE TITLE --}}
-                            @include('components._title-2')
-                        {{-- END PAGE TITLE --}}
-
-                        {{-- CONTENT --}}
-                            @yield('content')
-                        {{-- END CONTENT --}}
-                        
-                        {{-- FOOTER --}}
-                            @include('components._footer')
-                        {{-- END FOOTER --}}
-                    </div>
-                </div>
-            </div>
-            {{-- END MAIN CONTENT --}}
-
-        </div>
-        {{-- END PAGE CONTAINER --}}
-        
-    </div>
-
-    {{-- JS/JQUERY --}}
-        @include('components._scripts')
-        @livewireScripts
-        @yield('js')
-    {{-- END JS/JQUERY --}}
-</body>
+            {{-- start: js/jquery --}}
+                @include('components._scripts')
+                @livewireScripts
+                @yield('js')
+            {{-- end: js/jquery --}}
+		</section>
+	</body>
 </html>

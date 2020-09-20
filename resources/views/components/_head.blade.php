@@ -1,27 +1,25 @@
-<!-- Required meta tags-->
+{{-- Basic --}}
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Title Page-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>@yield('title')</title>
 
-<!-- Fontfaces CSS-->
-<link href="/admin/css/font-face.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+{{-- Web Fonts --}}
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
-<!-- Bootstrap CSS-->
-<link href="/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+{{-- Vendor CSS --}}
+<link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="/assets/vendor/magnific-popup/magnific-popup.css" />
+<link rel="stylesheet" href="/assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
 
-<!-- Vendor CSS-->
-<link href="/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-<link href="/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+{{-- Theme CSS --}}
+<link rel="stylesheet" href="/assets/stylesheets/theme.css" />
 
-<!-- Main CSS-->
-<link href="/admin/css/theme.css" rel="stylesheet" media="all">
+{{-- Skin CSS --}}
+<link rel="stylesheet" href="/assets/stylesheets/skins/default.css" />
+
+{{-- Theme Custom CSS --}}
+<link rel="stylesheet" href="/assets/stylesheets/theme-custom.css">
+
+{{-- Head Libs --}}
+<script src="/assets/vendor/modernizr/modernizr.js"></script>
