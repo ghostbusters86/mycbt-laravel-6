@@ -9,6 +9,8 @@ class Event extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = [];
+
     public function users() {
         return $this->belongsToMany('App\User');
     }

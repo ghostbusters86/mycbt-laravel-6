@@ -1,18 +1,10 @@
-{{-- Vendor --}}
-<script src="/assets/vendor/jquery/jquery.js"></script>
-<script src="/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="/assets/vendor/nanoscroller/nanoscroller.js"></script>
-<script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script src="/assets/vendor/magnific-popup/magnific-popup.js"></script>
-<script src="/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-
-{{-- Specific Page Vendor --}}
-{{-- Theme Base, Components and Settings --}}
-<script src="/assets/javascripts/theme.js"></script>
-
-{{-- Theme Custom --}}
-<script src="/assets/javascripts/theme.custom.js"></script>
-
-{{-- Theme Initialization Files --}}
-<script src="/assets/javascripts/theme.init.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<script src="/toastr/toastr.min.js"></script>

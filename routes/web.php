@@ -24,11 +24,14 @@ Route::prefix('admin')
                     ->name('logoutAdmin');
             });
 
-        Route::layout('layouts.base')
-            ->middleware(['auth:admin'])
+        Route::middleware(['auth:admin'])
             ->group(function () {
-                Route::livewire('/', 'admin.index')
-                    ->name('index');
+                Route::group(['layout' => 'layouts.base', 'section' => 'content'], function () {
+                    Route::livewire('/', 'admin.index')
+                        ->name('index');
+                    Route::livewire('/event', 'admin.event-index')
+                        ->name('event');
+                });
             });
     });
 
