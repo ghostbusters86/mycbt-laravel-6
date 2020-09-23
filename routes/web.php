@@ -1,19 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Admin Session //
 Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
-        // Auth Admin
+        // Login/Logout/Form
         Route::namespace('AuthAdmin')
             ->group(function () {
                 Route::get('/login', 'LoginController@loginForm')
@@ -26,15 +17,9 @@ Route::prefix('admin')
 
         Route::middleware(['auth:admin'])
             ->group(function () {
-                Route::group(['layout' => 'layouts.base', 'section' => 'content'], function () {
-                    Route::livewire('/', 'admin.index')
-                        ->name('index');
-                    Route::livewire('/event', 'admin.event-index')
-                        ->name('event');
-                });
+                // Page
             });
     });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
