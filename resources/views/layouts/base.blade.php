@@ -3,7 +3,6 @@
 <head>
 	{{-- start: head/meta/title --}}
 		@include('components._head')
-		@livewireStyles
 		@yield('css')
 	{{-- end: head/meta/title --}}
 </head>
@@ -46,7 +45,6 @@
 
 	{{-- start: js/jQuery --}}
 		@include('components._scripts')
-		@livewireScripts
 		@yield('js')
 	{{-- end: js/jQuery --}}
 </body>
