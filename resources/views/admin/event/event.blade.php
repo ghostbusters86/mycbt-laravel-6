@@ -11,8 +11,8 @@
                     <h4 class="card-title">Event</h4>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-sm btn-flat btn-success mb-2" id="tambahEvent"><i class="fa fa-plus"></i> Tambah</button>
-                    <table class="table table-bordered">
+                    <button class="btn btn-sm btn-flat btn-success mb-3" id="tambahEvent"><i class="fa fa-plus"></i> Tambah</button>
+                    <table id="event_table" class="table table-bordered">
                         <thead class="text-center">
                             <tr>
                                 <th>#</th>
@@ -24,14 +24,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                                <td>x</td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -52,12 +45,94 @@
             $('.start').datetimepicker();
             $('.end').datetimepicker();
 
+            $('#event_table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('admin.event') }}",
+                }, columns: [
+                    {
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    }, {
+                        data: 'event',
+                        name: 'event'
+                    }, {
+                        data: 'start_date',
+                        name: 'start_date'
+                    }, {
+                        data: 'end_date',
+                        name: 'end_date'
+                    }, {
+                        data: 'description',
+                        name: 'description'
+                    }, {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false
+                    },
+                ]
+            });
+
             $('#tambahEvent').on('click', function () {
                 $('#modalEventTitle').text('Tambah Event Baru');
+                $('#action_button').val('Tambah');
+                $('#action').val('Add');
                 $('#modalEvent').modal('show');
+            });
 
-                $('#modalEvent').on('submit', function (event) {
+            $('#formEvent').on('submit', function (event) {
+                event.preventDefault();
+                var action_url = "";
+                var txt = "";
+                if ($('#action').val() == 'Add') {
+                    action_url = "{{ route('admin.tambahEvent') }}";
+                    txt = "Event berhasil di tambahkan";
+                }
 
+                if ($('#action').val() == 'Edit') {
+                    action_url = "{{ route('admin.updateEvent') }}";
+                    txt = "Event berhasil di update";
+                }
+
+                $.ajax({
+                    url: action_url,
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'JSON',
+                    success: function (data) {
+                        if (data.success) {
+                            $('#event_table').DataTable().ajax.reload();
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                icon: 'success',
+                                text: txt,
+                                showConfirmButton: false,
+                            });
+                            $('#modalEvent').modal('hide');
+                            $('#formEvent')[0].reset();
+                        }
+                    }
+                });
+            });
+            
+            $(document).on('click', '.edit', function () {
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: '/admin/event/'+id,
+                    dataType: 'JSON',
+                    success: function(data) {
+                        $('#event').val(data.event.event);
+                        $('#start_date').val(data.event.start_date);
+                        $('#end_date').val(data.event.end_date);
+                        $('#description').val(data.event.description);
+                        $('#hidden_id').val(data.event.id);
+                        $('#modalEventTitle').text('Edit Event');
+                        $('#action_button').val('Update');
+                        $('#action').val('Edit');
+                        $('#modalEvent').modal('show');
+                    }
                 });
             });
         });
