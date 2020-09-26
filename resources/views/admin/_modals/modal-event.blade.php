@@ -54,3 +54,21 @@
         </div>
     </div>
 </div>
+
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirmation</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4 style="margin:0;">Apakah anda yakin ingin menghapus event ini?</h4>
+            </div>
+            <div class="modal-footer">
+             <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">HAPUS</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            </div>
+        </div>
+    </div>
+</div>

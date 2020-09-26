@@ -24,10 +24,12 @@ Route::name('admin.')
                     ->name('event');
                 Route::post('/admin/event/tambah', 'EventController@tambahEvent')
                     ->name('tambahEvent');
-                Route::post('/admin/event/update', 'EventController@updateEvent')
-                    ->name('updateEvent');
                 Route::get('/admin/event/{id}', 'EventController@edit')
                     ->name('edit');
+                Route::post('/admin/event/update', 'EventController@updateEvent')
+                    ->name('updateEvent');
+                Route::get('/admin/event/delete/{id}', 'EventController@deleteEvent')
+                    ->name('deleteEvent');
             });
 
         });

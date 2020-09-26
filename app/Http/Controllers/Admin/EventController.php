@@ -57,4 +57,9 @@ class EventController extends Controller
 
         return response()->json(['success' => 'Event di update']);
     }
+
+    public function deleteEvent($id) {
+        $event = Event::find($id);
+        $event->delete();
+    }
 }

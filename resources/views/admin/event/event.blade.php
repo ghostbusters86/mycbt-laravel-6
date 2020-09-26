@@ -116,7 +116,7 @@
                     }
                 });
             });
-            
+
             $(document).on('click', '.edit', function () {
                 var id = $(this).attr('id');
                 $.ajax({
@@ -132,6 +132,34 @@
                         $('#action_button').val('Update');
                         $('#action').val('Edit');
                         $('#modalEvent').modal('show');
+                    }
+                });
+            });
+
+            var user_id;
+
+            $(document).on('click', '.delete', function(){
+                user_id = $(this).attr('id');
+                $('#confirmModal').modal('show');
+            });
+
+            $('#ok_button').click(function(){
+                $.ajax({
+                    url: '/admin/event/delete/'+user_id,
+                    beforeSend: function () {
+                        $('#ok_button').text('Menghapus...');
+                    }, success: function (data) {
+                        setTimeout(function () {
+                            $('#confirmModal').modal('hide');
+                            $('#event_table').DataTable().ajax.reload();
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                icon: 'success',
+                                text: 'Data berhasil di hapus',
+                                showConfirmButton: false,
+                            });
+                        }, 2000);
                     }
                 });
             });
