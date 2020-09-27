@@ -31,11 +31,34 @@
                         <p>Event</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/admin/mapel" class="nav-link{{ request()->is('admin/mapel') ? ' active' : '' }}">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-graduation-cap"></i>
-                        <p>Mata Pelajaran</p>
+                        <p>
+                            Modul
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/mapel" class="nav-link{{ request()->is('admin/mapel') ? ' active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Mata Pelajaran</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/pertanyaan" class="nav-link{{ request()->is('admin/pertanyaan') ? ' active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pertanyaan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Jawaban</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

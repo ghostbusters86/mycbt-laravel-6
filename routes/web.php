@@ -42,6 +42,16 @@ Route::name('admin.')
                     ->name('updateMapel');
                 Route::get('/admin/mapel/delete/{id}', 'MapelController@delete')
                     ->name('deleteMapel');
+
+                // Pertanyaan
+                Route::get('/admin/pertanyaan', 'PertanyaanController@index')
+                    ->name('pertanyaan');
+                Route::get('/admin/pertanyaan/create', 'PertanyaanController@create')
+                    ->name('pertanyaanCreate');
+                Route::post('/admin/pertanyaan/tambah', 'PertanyaanController@tambahPertanyaan')
+                    ->name('tambahPertanyaan');
+                Route::post('/admin/pertanyaan/upload', 'PertanyaanController@uploadImage')
+                    ->name('uploadImage');
             });
 
         });
