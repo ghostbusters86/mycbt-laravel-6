@@ -31,6 +31,12 @@
                         <p>Event</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/mapel" class="nav-link{{ request()->is('admin/mapel') ? ' active' : '' }}">
+                        <i class="nav-icon fas fa-graduation-cap"></i>
+                        <p>Mata Pelajaran</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

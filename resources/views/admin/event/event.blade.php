@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="alert alert-warning">
-                <p><i class="fa fa-exclamation-triangle"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem voluptatem in, dolores tempore nisi.</p>
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem voluptatem in, dolores tempore nisi.</p>
             </div>
             <div class="card">
                 <div class="card-header">
@@ -143,7 +143,7 @@
                 $('#confirmModal').modal('show');
             });
 
-            $('#ok_button').click(function(){
+            $('#ok_button').click(function (){
                 $.ajax({
                     url: '/admin/event/delete/'+user_id,
                     beforeSend: function () {

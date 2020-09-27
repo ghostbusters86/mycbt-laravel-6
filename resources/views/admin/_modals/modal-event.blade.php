@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col">
                             <input type="hidden" name="action" id="action">
-                            <input type="text" name="hidden_id" id="hidden_id">
+                            <input type="hidden" name="hidden_id" id="hidden_id">
                             <input type="submit" name="action_button" id="action_button" class="btn btn-sm btn-block btn-flat btn-success" value="Tambah">
                         </div>
                     </div>
