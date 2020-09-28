@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link @if (request()->is('admin/mapel') || request()->is('admin/pertanyaan')) active @else @endif">
                         <i class="nav-icon fas fa-graduation-cap"></i>
                         <p>
                             Modul

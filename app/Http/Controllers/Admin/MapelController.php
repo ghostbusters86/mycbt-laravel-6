@@ -15,8 +15,8 @@ class MapelController extends Controller
             $data = Mapel::with('event')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
-                    $button = '<button id="'.$data->id.'" class="edit btn btn-primary btn-flat btn-sm">Edit</button>';
-                    $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="delete btn btn-flat btn-danger btn-sm">Delete</button>';
+                    $button = '<button id="'.$data->id.'" class="edit btn btn-primary btn-flat btn-sm" title="Edit Mata Pelajaran"><i class="fas fa-pencil-alt"></i></button>';
+                    $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="delete btn btn-flat btn-danger btn-sm" title="Hapus Mata Pelajaran"><i class="fas fa-trash"></i></button>';
                     return $button;
                 })
                 ->addColumn('event', function (Mapel $mapel) {
