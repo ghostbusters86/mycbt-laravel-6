@@ -59,9 +59,7 @@ Route::name('admin.')
                 Route::get('/admin/pertanyaan/delete/{id}', 'PertanyaanController@delete')
                     ->name('deletePertanyaan');
             });
-
         });
-
     });
 
 Auth::routes();
