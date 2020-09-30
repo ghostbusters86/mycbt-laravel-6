@@ -58,6 +58,18 @@ Route::name('admin.')
                     ->name('updatePertanyaan');
                 Route::get('/admin/pertanyaan/delete/{id}', 'PertanyaanController@delete')
                     ->name('deletePertanyaan');
+
+                // Penilaian
+                Route::get('/admin/penilaian', 'PenilaianController@index')
+                    ->name('penilaian');
+                Route::post('/admin/penilaian/tambah', 'PenilaianController@tambahPenilaian')
+                    ->name('tambahPenilaian');
+                Route::get('/admin/penilaian/{id}', 'PenilaianController@editPenilaian')
+                    ->name('editPenilaian');
+                Route::post('/admin/penilaian/update', 'PenilaianController@updatePenilaian')
+                    ->name('updatePenilaian');
+                Route::get('/admin/penilaian/delete/{id}', 'PenilaianController@deletePenilaian')
+                    ->name('deletePenilaian');
             });
         });
     });

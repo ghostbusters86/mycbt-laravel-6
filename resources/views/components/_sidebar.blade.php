@@ -60,6 +60,12 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/penilaian" class="nav-link{{ request()->is('admin/penilaian') ? ' active' : '' }}">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>Penilaian</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
