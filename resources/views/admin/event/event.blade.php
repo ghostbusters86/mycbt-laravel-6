@@ -11,7 +11,7 @@
                     <h4 class="card-title">Event</h4>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-sm btn-flat btn-success mb-3" id="tambahEvent"><i class="fa fa-plus"></i> Tambah</button>
+                    <button class="btn btn-sm btn-flat btn-primary mb-3" id="tambahEvent"><i class="fa fa-plus"></i> Tambah</button>
                     <table id="event_table" class="table table-bordered">
                         <thead class="text-center">
                             <tr>
@@ -103,13 +103,7 @@
                     success: function (data) {
                         if (data.success) {
                             $('#event_table').DataTable().ajax.reload();
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                text: txt,
-                                showConfirmButton: false,
-                            });
+                            toastr.success(txt);
                             $('#modalEvent').modal('hide');
                             $('#formEvent')[0].reset();
                         }
@@ -152,13 +146,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#event_table').DataTable().ajax.reload();
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                text: 'Data berhasil di hapus',
-                                showConfirmButton: false,
-                            });
+                            toastr.success('Event berhasil dihapus');
                         }, 2000);
                     }
                 });

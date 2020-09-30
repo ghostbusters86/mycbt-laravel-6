@@ -11,7 +11,7 @@
                     <h4 class="card-title">Mata Pelajaran</h4>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-sm btn-flat btn-success mb-3" id="tambahMapel"><i class="fa fa-plus"></i> Tambah</button>
+                    <button class="btn btn-sm btn-flat btn-primary mb-3" id="tambahMapel"><i class="fa fa-plus"></i> Tambah</button>
                     <table id="mapel_table" class="table table-bordered">
                         <thead class="text-center">
                             <tr>
@@ -95,13 +95,7 @@
                     success: function (data) {
                         if (data.success) {
                             $('#mapel_table').DataTable().ajax.reload();
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                text: txt,
-                                showConfirmButton: false,
-                            });
+                            toastr.success(txt);
                             $('#modalMapel').modal('hide');
                             $('#formMapel')[0].reset();
                         }
@@ -144,13 +138,7 @@
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
                             $('#mapel_table').DataTable().ajax.reload();
-                            Swal.fire({
-                                toast: true,
-                                position: 'top-end',
-                                icon: 'success',
-                                text: 'Data berhasil di hapus',
-                                showConfirmButton: false,
-                            });
+                            toastr.success('Mata Pelajaran berhasil di hapus');
                         }, 2000);
                     }
                 });

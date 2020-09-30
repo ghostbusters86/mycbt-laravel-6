@@ -49,13 +49,13 @@
                         <li class="nav-item">
                             <a href="/admin/pertanyaan" class="nav-link{{ request()->is('admin/pertanyaan') ? ' active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Pertanyaan</p>
+                                <p>Kumpulan Soal</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Jawaban</p>
+                                <p>Kumpulan Jawaban</p>
                             </a>
                         </li>
                     </ul>

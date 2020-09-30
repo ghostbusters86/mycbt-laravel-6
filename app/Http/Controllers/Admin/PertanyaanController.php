@@ -50,7 +50,62 @@ class PertanyaanController extends Controller
             'pertanyaan' => $request->pertanyaan
         ]);
 
+        $notification = array(
+            'message' => 'Pertanyaan berhasil dibuat',
+            'alert-type' => 'success'
+        );
+
         return redirect('/admin/pertanyaan')
-            ->with('success', 'Pertanyaan berhasil dibuat');
+            ->with($notification);
+    }
+
+    public function editPertanyaan($id) {
+        $pertanyaan = Pertanyaan::find($id);
+        $mapels = Mapel::latest()->get();
+
+        foreach ($pertanyaan as $value) {
+            $value;
+        }
+
+        return view('admin.pertanyaan.pertanyaan-edit', [
+            'pertanyaan' => $pertanyaan,
+            'mapels' => $mapels
+        ]);
+    }
+
+    public function updatePertanyaan(Request $request, Pertanyaan $pertanyaan) {
+        $request->validate([
+            'mapel_id' => 'required',
+            'pertanyaan' => 'required'
+        ], [
+            'pertanyaan.required' => 'Pertanyaan harus diisi',
+            'mapel_id.required' => 'Kategori Mata Pelajaran harus dipilih'
+        ]);
+
+        $pertanyaan = Pertanyaan::whereId($request->hidden_id)->update([
+            'mapel_id' => $request->mapel_id,
+            'pertanyaan' => $request->pertanyaan
+        ]);
+
+        $notification = [
+            'message' => 'Pertanyaan berhasil di edit',
+            'alert-type' => 'success'
+        ];
+
+        return redirect('/admin/pertanyaan')
+            ->with($notification);
+    }
+
+    public function delete($id) {
+        $pertanyaan = Pertanyaan::find($id);
+        $pertanyaan->delete();
+
+        $notification = [
+            'message' => 'Pertanyaan berhasil di hapus',
+            'alert-type' => 'success'
+        ];
+
+        return redirect('/admin/pertanyaan')
+            ->with($notification);
     }
 }

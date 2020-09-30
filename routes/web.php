@@ -52,6 +52,12 @@ Route::name('admin.')
                     ->name('tambahPertanyaan');
                 Route::post('/admin/pertanyaan/upload', 'PertanyaanController@uploadImage')
                     ->name('uploadImage');
+                Route::get('/admin/pertanyaan/edit/{id}', 'PertanyaanController@editPertanyaan')
+                    ->name('editPertanyaan');
+                Route::put('/admin/pertanyaan/update', 'PertanyaanController@updatePertanyaan')
+                    ->name('updatePertanyaan');
+                Route::get('/admin/pertanyaan/delete/{id}', 'PertanyaanController@delete')
+                    ->name('deletePertanyaan');
             });
 
         });

@@ -3,23 +3,22 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="alert alert-warning">
-                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem voluptatem in, dolores tempore nisi.</p>
-            </div>
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Pertanyaan</h4>
                 </div>
-                <form action="{{ route('admin.tambahPertanyaan') }}" method="post">
+                <form action="{{ route('admin.updatePertanyaan') }}" method="post">
                 @csrf
+                @method('PUT')
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="mapel_id">Plih Mata Pelajaran</label>
+                                <input type="hidden" name="hidden_id" value="{{ $pertanyaan->id }}">
                                 <select name="mapel_id" id="mapel_id" class="form-control form-control-sm" required>
                                     <option value="">-- Pilih --</option>
                                     @foreach ($mapels as $mapel)
-                                        <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
+                                        <option value="{{ $mapel->id }}" {{ $mapel->id == $pertanyaan->mapel_id ? 'selected' : '' }}>{{ $mapel->mapel }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -27,7 +26,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="pertanaayn">Tulis Pertanyaan:</label>
-                                <textarea name="pertanyaan" id="pertanyaan" cols="10" rows="5" class="form-control form-control-sm @error('pertanyaan') is-invalid @enderror" placeholder="Buat pertanyaan disini"></textarea>
+                                <textarea name="pertanyaan" id="pertanyaan" cols="10" rows="5" class="form-control form-control-sm @error('pertanyaan') is-invalid @enderror" placeholder="Buat pertanyaan disini">{{ $pertanyaan->pertanyaan }}</textarea>
                                 @error('pertanyaan')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -37,7 +36,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col">
-                                <button type="submit" class="btn btn-block btn-sm btn-success">Tambah</button>
+                                <button type="submit" class="btn btn-block btn-sm btn-success">Update</button>
                             </div>
                         </div>
                     </div>
