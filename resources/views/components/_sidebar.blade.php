@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin/jawaban" class="nav-link{{ request()->is('admin/jawaban') ? ' active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kumpulan Jawaban</p>
                             </a>

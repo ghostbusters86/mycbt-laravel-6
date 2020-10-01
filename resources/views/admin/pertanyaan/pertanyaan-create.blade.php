@@ -16,12 +16,15 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="mapel_id">Plih Mata Pelajaran</label>
-                                <select name="mapel_id" id="mapel_id" class="form-control form-control-sm" required>
+                                <select name="mapel_id" id="mapel_id" class="form-control form-control-sm @error('mapel_id') is-invalid @enderror" required>
                                     <option value="">-- Pilih --</option>
                                     @foreach ($mapels as $mapel)
                                         <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
                                     @endforeach
                                 </select>
+                                @error('mapel_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -38,6 +41,7 @@
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-block btn-sm btn-success">Tambah</button>
+                                <a href="/admin/pertanyaan" class="btn btn-danger btn-block btn-sm btn-flat">Batal</a>
                             </div>
                         </div>
                     </div>

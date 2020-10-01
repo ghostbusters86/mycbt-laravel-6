@@ -50,10 +50,10 @@ class PertanyaanController extends Controller
             'pertanyaan' => $request->pertanyaan
         ]);
 
-        $notification = array(
+        $notification = [
             'message' => 'Pertanyaan berhasil dibuat',
             'alert-type' => 'success'
-        );
+        ];
 
         return redirect('/admin/pertanyaan')
             ->with($notification);
@@ -62,10 +62,6 @@ class PertanyaanController extends Controller
     public function editPertanyaan($id) {
         $pertanyaan = Pertanyaan::find($id);
         $mapels = Mapel::latest()->get();
-
-        foreach ($pertanyaan as $value) {
-            $value;
-        }
 
         return view('admin.pertanyaan.pertanyaan-edit', [
             'pertanyaan' => $pertanyaan,

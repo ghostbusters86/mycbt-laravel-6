@@ -1,41 +1,38 @@
 @extends('layouts.base')
-@section('title', 'Kumpulan Pertanyaan')
+@section('title', 'Kumpulan Jawaban')
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="alert alert-warning">
-                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem voluptatem in, dolores tempore nisi.</p>
-            </div>
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Kumpulan Pertanyaan</h4>
+                    <h4 class="card-title">Kumpulan Jawaban</h4>
                 </div>
                 <div class="card-body">
-                    <a href="/admin/pertanyaan/create" class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+                    <a href="/admin/jawaban/create" class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
                     @if (session()->has('success'))
                         <span class="toastrDefaultSuccess"></span>
                     @endif
-                    <table class="table table-bordered" id="pertanyaan_table">
+                    <table class="table table-bordered" id="jawaban_table">
                         <thead class="text-center">
                             <tr>
-                                <th>Pertanyaan</th>
-                                <th>Jumlah Jawaban</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Action</th>
+                                <th>#</th>
+                                <th>Jawaban</th>
+                                <th>Benar/Salah</th>
+                                <th>Point</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @foreach ($pertanyaans as $p)
+                            @foreach ($jawabans as $j => $jawaban)
                                 <tr>
-                                    <td>{!! $p->pertanyaan !!}</td>
-                                    <td>{{ $p->jawabans->count() }}</td>
-                                    <td>{{ $p->mapel->mapel }}</td>
+                                    <td>{{ ++$j }}</td>
+                                    <td>{!! $jawaban->jawaban !!}</td>
+                                    <td><strong>{{ $jawaban->benar_salah == 'Y' ? 'Benar' : 'Salah' }}</strong></td>
+                                    <td>{{ $jawaban->point }}</td>
                                     <td>
-                                        <a href="{{ route('admin.editPertanyaan', $p->id) }}" class="btn btn-sm btn-flat btn-info" title="Edit Pertanyaan">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
+                                        <a href="{{ route('admin.editJawaban', $jawaban->id) }}" class="btn btn-sm btn-flat btn-info" title="Edit Jawaban"><i class="fas fa-pencil-alt"></i></a>
                                         &nbsp;&nbsp;
-                                        <button type="button" class="delete btn btn-sm btn-flat btn-danger" id="{{ $p->id }}" title="Hapus Pertanyaan">
+                                        <button type="button" class="delete btn btn-sm btn-flat btn-danger" id="{{ $jawaban->id }}" title="Hapus Jawaban">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -56,7 +53,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h4 style="margin:0;">Apakah anda yakin ingin menghapus Pertanyaan ini?</h4>
+                    <h4 style="margin:0;">Apakah anda yakin ingin menghapus Jawaban ini?</h4>
                 </div>
                 <div class="modal-footer">
                 <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">HAPUS</button>
@@ -70,7 +67,7 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('#pertanyaan_table').DataTable();
+            $('#jawaban_table').DataTable();
 
             var user_id = '';
             $(document).on('click', '.delete', function(){
@@ -80,7 +77,7 @@
 
             $('#ok_button').click(function (){
                 $.ajax({
-                    url: '/admin/pertanyaan/delete/'+user_id,
+                    url: '/admin/jawaban/delete/'+user_id,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {

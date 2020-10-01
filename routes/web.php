@@ -59,6 +59,20 @@ Route::name('admin.')
                 Route::get('/admin/pertanyaan/delete/{id}', 'PertanyaanController@delete')
                     ->name('deletePertanyaan');
 
+                // Jawaban
+                Route::get('/admin/jawaban', 'JawabanController@index')
+                    ->name('jawaban');
+                Route::get('/admin/jawaban/create', 'JawabanController@createJawaban')
+                    ->name('createJawaban');
+                Route::post('/admin/jawaban/tambah', 'JawabanController@tambahJawaban')
+                    ->name('tambahJawaban');
+                Route::get('/admin/jawaban/edit/{id}', 'JawabanController@editJawaban')
+                    ->name('editJawaban');
+                Route::put('/admin/jawaban/update', 'JawabanController@updateJawaban')
+                    ->name('updateJawaban');
+                Route::get('/admin/jawaban/delete/{id}', 'JawabanController@delete')
+                    ->name('deleteJawaban');
+
                 // Penilaian
                 Route::get('/admin/penilaian', 'PenilaianController@index')
                     ->name('penilaian');
