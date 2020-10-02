@@ -24,6 +24,9 @@ class MapelController extends Controller
                 ->addColumn('event', function (Mapel $mapel) {
                     return $mapel->event->event;
                 })
+                ->addColumn('jlh_soal', function ($data) {
+                    return $data->pertanyaans->count();
+                })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
@@ -108,7 +111,7 @@ class MapelController extends Controller
             'alert-type' => 'success'
         ];
 
-        return redirect('/admin/pertanyaan')
+        return redirect('/admin/mapel')
             ->with($notification);
     }
 }

@@ -20,6 +20,7 @@
                                 <th>Mapel</th>
                                 <th>Waktu</th>
                                 <th>Event</th>
+                                <th>Jlh. Soal</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -58,6 +59,10 @@
                     }, {
                         data: 'event',
                         name: 'event_id.event'
+                    }, {
+                        data: 'jlh_soal',
+                        name: 'jlh_soal',
+                        orderable: false
                     }, {
                         data: 'action',
                         name: 'action',
@@ -144,5 +149,27 @@
                 });
             });
         });
+
+        // Toastr
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}";
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+                    break;
+
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+        @endif
     </script>
 @endsection

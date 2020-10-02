@@ -9,9 +9,6 @@
                 </div>
                 <div class="card-body">
                     <a href="/admin/jawaban/create" class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
-                    @if (session()->has('success'))
-                        <span class="toastrDefaultSuccess"></span>
-                    @endif
                     <table class="table table-bordered" id="jawaban_table">
                         <thead class="text-center">
                             <tr>

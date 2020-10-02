@@ -12,9 +12,6 @@
                 </div>
                 <div class="card-body">
                     <a href="/admin/pertanyaan/create" class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
-                    @if (session()->has('success'))
-                        <span class="toastrDefaultSuccess"></span>
-                    @endif
                     <table class="table table-bordered" id="pertanyaan_table">
                         <thead class="text-center">
                             <tr>
@@ -96,7 +93,7 @@
         });
 
         // Toastr
-        @if(Session::has('message'))
+        @if (Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}";
             switch (type) {
                 case 'info':
