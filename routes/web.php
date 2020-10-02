@@ -62,6 +62,10 @@ Route::name('admin.')
                     ->name('updatePertanyaan');
                 Route::get('/admin/pertanyaan/delete/{id}', 'PertanyaanController@delete')
                     ->name('deletePertanyaan');
+                Route::get('/admin/pertanyaan/tambah-jawaban/{id}', 'PertanyaanController@tambahJawabanPertanyaan')
+                    ->name('tambahJawabanPertanyaan');
+                Route::post('/admin/pertanyaan/insert-jawaban', 'PertanyaanController@insertJawabanPertanyaan')
+                    ->name('insertJawabanPertanyaan');
 
                 // Jawaban
                 Route::get('/admin/jawaban', 'JawabanController@index')

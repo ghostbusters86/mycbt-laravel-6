@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Mapel;
+use App\Jawaban;
+use App\Penilaian;
 use App\Pertanyaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -98,6 +100,63 @@ class PertanyaanController extends Controller
 
         $notification = [
             'message' => 'Pertanyaan berhasil di hapus',
+            'alert-type' => 'success'
+        ];
+
+        return redirect('/admin/pertanyaan')
+            ->with($notification);
+    }
+
+    public function tambahJawabanPertanyaan($id) {
+        $pertanyaan = Pertanyaan::find($id);
+        $pertanyaan->with([
+            'jawabans' => function ($q) {
+                return $q;
+            }
+        ])
+        ->get();
+        $penilaians = Penilaian::latest()->get();
+
+        return view('admin.jawaban.jawaban-pertanyaan', [
+            'pertanyaan' => $pertanyaan,
+            'penilaians' => $penilaians
+        ]);
+    }
+
+    public function insertJawabanPertanyaan(Request $request) {
+        $request->validate([
+            'jawaban'       => 'required',
+            'benar_salah'   => 'required',
+            'penilaian_id'  => 'required'
+        ], [
+            'jawaban.required'      => 'Jawaban harus diisi',
+            'benar_salah.required'  => 'Pilih salah satu',
+            'penilaian_id.required' => 'Pilih salah satu'
+        ]);
+
+        $point = '';
+        $penilaian = Penilaian::where('id', $request->penilaian_id)
+            ->get()
+            ->map->only('id', 'benar', 'salah');
+
+        if ($request->benar_salah == 'Y') {
+            $point = $penilaian[0]['benar'];
+        } else if ($request->benar_salah == 'N') {
+            $point = $penilaian[0]['salah'];
+        }
+
+        $form = [
+            'pertanyaan_id' => $request->pertanyaan_id,
+            'jawaban'       => $request->jawaban,
+            'benar_salah'   => $request->benar_salah,
+            'penilaian_id'  => $request->penilaian_id,
+            'point'         => $point
+        ];
+
+        $jawaban = Jawaban::create($form);
+
+        $notification = [
+            'message' => 'Jawaban berhasil di buat',
             'alert-type' => 'success'
         ];
 

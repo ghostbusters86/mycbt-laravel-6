@@ -28,6 +28,10 @@
                                     <td>{{ $p->jawabans->count() }}</td>
                                     <td>{{ $p->mapel->mapel }}</td>
                                     <td>
+                                        <a href="{{ route('admin.tambahJawabanPertanyaan', $p->id) }}" class="btn btn-sm btn-flat btn-warning" title="Tulis Jawaban">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        &nbsp;&nbsp;
                                         <a href="{{ route('admin.editPertanyaan', $p->id) }}" class="btn btn-sm btn-flat btn-info" title="Edit Pertanyaan">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
