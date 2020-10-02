@@ -66,6 +66,15 @@
                         <p>Penilaian</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>{{ __('Keluar') }}</p>
+                    </a>
+                    <form id="logout-form" action="/admin/logout" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>
