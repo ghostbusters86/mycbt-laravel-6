@@ -24,8 +24,8 @@
                                 <tr>
                                     <td>{{ ++$j }}</td>
                                     <td>{!! $jawaban->jawaban !!}</td>
-                                    <td><strong>{{ $jawaban->benar_salah == 'Y' ? 'Benar' : 'Salah' }}</strong></td>
-                                    <td>{{ $jawaban->point }}</td>
+                                    <td class="{{ $jawaban->benar_salah == 'Y' ? 'text-success' : 'text-danger' }}"><strong>{{ $jawaban->benar_salah == 'Y' ? 'Benar' : 'Salah' }}</strong></td>
+                                    <td class="{{ $jawaban->benar_salah == 'Y' ? 'text-success' : 'text-danger' }}">{{ $jawaban->point }}</td>
                                     <td>
                                         <a href="{{ route('admin.editJawaban', $jawaban->id) }}" class="btn btn-sm btn-flat btn-info" title="Edit Jawaban"><i class="fas fa-pencil-alt"></i></a>
                                         &nbsp;&nbsp;

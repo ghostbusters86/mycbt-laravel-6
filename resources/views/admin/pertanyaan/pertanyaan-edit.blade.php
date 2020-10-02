@@ -3,6 +3,18 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;<strong>TIPS.</strong> Berikut cara mengupload soal yang terdapat gambar.</p>
+                <ul>
+                    <li>Seret gambar dari file manager ke text editor (Drag and drop).</li>
+                    <li>Copy gambar melalui google, kemudian paste di text editor.</li>
+                    <li>Copy gambar melalui snipping tool/screenshot.</li>
+                    <li>Untuk equation/rumus bisa langsung di copy-paste.</li>
+                </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Edit Pertanyaan</h4>

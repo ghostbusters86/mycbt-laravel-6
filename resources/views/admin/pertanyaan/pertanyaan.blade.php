@@ -1,14 +1,20 @@
 @extends('layouts.base')
-@section('title', 'Kumpulan Pertanyaan')
+@section('title', 'Kumpulan Soal')
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="alert alert-warning">
-                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem voluptatem in, dolores tempore nisi.</p>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;<strong>PERHATIAN</strong>. Menghapus Soal juga akan menghapus:</p>
+                <ul>
+                    <li>Jawaban</li>
+                </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Kumpulan Pertanyaan</h4>
+                    <h4 class="card-title">Kumpulan Soal</h4>
                 </div>
                 <div class="card-body">
                     <a href="/admin/pertanyaan/create" class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>

@@ -3,8 +3,31 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="alert alert-warning">
-                <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem voluptatem in, dolores tempore nisi.</p>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;<strong>PERHATIAN</strong>. Menghapus Penilaian juga akan menghapus:</p>
+                        <ul>
+                            <li>Jawaban</li>
+                            <li>Baca tips mengisi penilaian di samping.</li>
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <p><i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;<strong>TIPS.</strong></p>
+                        <ul>
+                            <li>Tambahkan '-' (minus) untuk mengisi point salah.</li>
+                            <li>untuk memberikan koma (,) silahkan gunakan titik (.)</li>
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <div class="card-header">
