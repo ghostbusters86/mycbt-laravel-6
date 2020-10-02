@@ -13,7 +13,8 @@ Aplikasi ini dibuat untuk mempermudah guru dalam melaksanakan ujian online untuk
 - Untuk menjalankan aplikasi jalankan perintah ```php artisan serve```
 - Untuk login admin silahkan kunjungi URL berikut ```http://localhost:8000/admin```
 - Email: ```admin@admin.com``` Password: ```admin12```
-<br>
+
+
 Jika ada pertanyaan silahkan hubungi saya melalui kontak dibawah ini
 ## Email and Telegram
 - [Email](mailto:pucukpisang97@gmail.com)
