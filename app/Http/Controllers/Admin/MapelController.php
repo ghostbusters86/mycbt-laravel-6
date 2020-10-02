@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Event;
 use App\Mapel;
+use App\Pertanyaan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,8 @@ class MapelController extends Controller
             $data = Mapel::with('event')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
-                    $button = '<button id="'.$data->id.'" class="edit btn btn-primary btn-flat btn-sm" title="Edit Mata Pelajaran"><i class="fas fa-pencil-alt"></i></button>';
+                    $button = '<a href="/admin/mapel/tambah-pertanyaan/'.$data->id.'" class="edit btn btn-warning btn-flat btn-sm" title="Buat Soal"><i class="fas fa-pen"></i></a>';
+                    $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="edit btn btn-primary btn-flat btn-sm" title="Edit Mata Pelajaran"><i class="fas fa-pencil-alt"></i></button>';
                     $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="delete btn btn-flat btn-danger btn-sm" title="Hapus Mata Pelajaran"><i class="fas fa-trash"></i></button>';
                     return $button;
                 })
@@ -71,5 +73,42 @@ class MapelController extends Controller
     public function delete($id) {
         $mapel = Mapel::find($id);
         $mapel->delete();
+    }
+
+    public function tambahPertanyaanMapel($id) {
+        $mapel = Mapel::find($id);
+        $mapel->with([
+            'pertanyaans' => function ($q) {
+                return $q;
+            }
+        ])
+        ->get();
+
+        return view('admin.pertanyaan.pertanyaan-mapel', [
+            'mapel' => $mapel,
+        ]);
+    }
+
+    public function insertPertanyaanMapel(Request $request) {
+        $request->validate([
+            'pertanyaan' => 'required',
+        ], [
+            'pertanyaan.required' => 'Pertanyaan harus diisi'
+        ]);
+
+        $form = [
+            'mapel_id'      => $request->mapel_id,
+            'pertanyaan'    => $request->pertanyaan,
+        ];
+
+        $pertanyaan = Pertanyaan::create($form);
+
+        $notification = [
+            'message' => 'Pertanyaan berhasil dibuat',
+            'alert-type' => 'success'
+        ];
+
+        return redirect('/admin/pertanyaan')
+            ->with($notification);
     }
 }

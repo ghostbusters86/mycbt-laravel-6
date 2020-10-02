@@ -70,7 +70,9 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('#pertanyaan_table').DataTable();
+            $('#pertanyaan_table').DataTable({
+                'ordering': false
+            });
 
             var user_id = '';
             $(document).on('click', '.delete', function(){

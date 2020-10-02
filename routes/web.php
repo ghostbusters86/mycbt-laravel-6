@@ -42,6 +42,10 @@ Route::name('admin.')
                     ->name('updateMapel');
                 Route::get('/admin/mapel/delete/{id}', 'MapelController@delete')
                     ->name('deleteMapel');
+                Route::get('/admin/mapel/tambah-pertanyaan/{id}', 'MapelController@tambahPertanyaanMapel')
+                    ->name('tambahPertanyaanMapel');
+                Route::post('/admin/mapel/insert-pertanyaan', 'MapelController@insertPertanyaanMapel')
+                    ->name('insertPertanyaanMapel');
 
                 // Pertanyaan
                 Route::get('/admin/pertanyaan', 'PertanyaanController@index')
