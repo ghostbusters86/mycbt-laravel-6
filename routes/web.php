@@ -99,6 +99,11 @@ Route::name('admin.')
 Auth::routes(['verify' => true]);
 Route::name('client.')
     ->group(function () {
+        Route::group(['namespace' => 'Auth'], function () {
+            Route::post('/client/logout', 'LoginController@logoutUser')
+                ->name('logoutUser');
+        });
+
         Route::group(['namespace' => 'Client', 'middleware' => ['auth:web', 'verified']], function () {
             Route::get('/client-dashboard', 'ClientController@index')
                 ->name('index');

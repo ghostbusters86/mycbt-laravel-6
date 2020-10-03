@@ -13,7 +13,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="card">
+            <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h4 class="card-title">Mata Pelajaran</h4>
                 </div>

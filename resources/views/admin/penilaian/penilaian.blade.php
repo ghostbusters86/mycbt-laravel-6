@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h4 class="card-title">Penilaian</h4>
                 </div>

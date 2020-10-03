@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-            <div class="card">
+            <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h4 class="card-title">Kumpulan Jawaban</h4>
                 </div>
