@@ -96,12 +96,11 @@ Route::name('admin.')
 
 
 // Client Side
+Auth::routes(['verify' => true]);
 Route::name('client.')
     ->group(function () {
-        Route::group(['namespace' => 'Client', 'middleware' => 'auth:web'], function () {
+        Route::group(['namespace' => 'Client', 'middleware' => ['auth:web', 'verified']], function () {
             Route::get('/client-dashboard', 'ClientController@index')
                 ->name('index');
         });
     });
-
-Auth::routes();
