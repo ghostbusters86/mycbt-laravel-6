@@ -12,25 +12,11 @@
 
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-            <li class="nav-item">
-                <a href="index3.html" class="nav-link">
-                    <i class="fas {{ Auth::user()->jenis_kelamin == 'L' ? 'fa-male' : 'fa-female' }}"></i>
-                    {{ Auth::user()->name }}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Keluar
-                </a>
-                <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-bell"></i>
                     <span class="badge badge-warning navbar-badge">15</span>
+                    Notify
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-header">15 Notifications</span>
@@ -52,6 +38,21 @@
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a href="index3.html" class="nav-link">
+                    <i class="fas {{ Auth::user()->jenis_kelamin == 'L' ? 'fa-male' : 'fa-female' }}"></i>
+                    {{ Auth::user()->name }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Keluar
+                </a>
+                <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
         </ul>
     </div>
