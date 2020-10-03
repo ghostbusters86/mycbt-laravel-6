@@ -23,7 +23,7 @@
 		<div class="login-logo">
 			<a href="#"><b>Client</b> Login</a>
 		</div>
-		<div class="card">
+		<div class="card card-primary card-outline">
 			<div class="card-body login-card-body">
 				<p class="login-box-msg">Login untuk melanjutkan</p>
 				<form method="POST" action="{{ route('login') }}">
