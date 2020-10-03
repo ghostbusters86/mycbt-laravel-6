@@ -12,7 +12,9 @@ Aplikasi ini dibuat untuk mempermudah guru dalam melaksanakan ujian online untuk
 - Jalankan perintah ```php artisan migrate --seed```
 - Untuk menjalankan aplikasi jalankan perintah ```php artisan serve```
 - Untuk login admin silahkan kunjungi URL berikut ```http://localhost:8000/admin```
+- Untuk login user silahkan kunjungi URL ```http://localhost:8000/login```
 - Email: ```admin@admin.com``` Password: ```admin12```
+- Email: ```user@user.com``` Password: ```user1234```
 
 
 Jika ada pertanyaan silahkan hubungi saya melalui kontak dibawah ini
