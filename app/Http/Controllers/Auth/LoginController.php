@@ -26,7 +26,12 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectTo() {
+        if (Auth::guard('web')) {
+            $this->redirectTo = route('client.index');
+            return $this->redirectTo;
+        }
+    }
 
     /**
      * Create a new controller instance.
