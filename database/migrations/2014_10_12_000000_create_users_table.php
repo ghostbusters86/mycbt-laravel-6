@@ -24,10 +24,9 @@ class CreateUsersTable extends Migration
             $table->integer('kelas');
             $table->unsignedBigInteger('provinsi_id');
             $table->unsignedBigInteger('kabupaten_kota_id');
-            $table->unsignedBigInteger('kecamatan_id');
             $table->text('alamat_tinggal');
             $table->string('no_telepon', 20);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

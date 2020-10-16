@@ -29,38 +29,166 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register akun baru</p>
                 <form action="#" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="name">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Nama Lengkap" name="name">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="Alamat Email" name="email">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-envelope"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Alamat Email" name="email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" placeholder="Konfirmasi password">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-check"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select name="jenis_kelamin" class="form-control">
+                                    <option value="" selected>-- Jenis Kelamin --</option>
+                                    <option value="L">Pria</option>
+                                    <option value="P">Wanita</option>
+                                </select>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-venus-mars"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="No. Telp/WhatsApp">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-mobile-alt"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Konfirmasi password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Asal Sekolah" name="asal_sekolah">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-school"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Kelas (Hanya diisi 1-12. Contoh. 10)">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-tasks"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select name="provinsi_id" class="form-control">
+                                    <option value="">-- Provinsi --</option>
+                                    @foreach (\App\Event::latest()->get() as $key => $event)
+                                        <option value="{{ $event->id }}">{{ $event->event }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-globe-asia"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select name="kabupaten_kota_id" class="form-control">
+                                    <option value="">-- Kabupaten/Kota --</option>
+                                    @foreach (\App\Event::latest()->get() as $key => $event)
+                                        <option value="{{ $event->id }}">{{ $event->event }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-city"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select name="event_id" class="form-control">
+                                    <option value="">-- Pilih Event --</option>
+                                    @foreach (\App\Event::latest()->get() as $key => $event)
+                                        <option value="{{ $event->id }}">{{ $event->event }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-code"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <textarea name="alamat_tinggal" cols="8" rows="2" class="form-control" placeholder="Alamat Lengkap"></textarea>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-home"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="row">
                         <div class="col">
                             <button type="submit" class="btn btn-primary btn-block">Daftar</button>
