@@ -6,6 +6,7 @@
     <title>Halaman Registrasi</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
@@ -28,7 +29,8 @@
         <div class="card card-primary card-outline">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register akun baru</p>
-                <form action="#" method="post">
+                <form method="POST" action="{{ route('register') }}">
+                @csrf
                     <div class="row">
                         <div class="col">
                             <div class="input-group mb-3">
@@ -128,10 +130,10 @@
                     <div class="row">
                         <div class="col">
                             <div class="input-group mb-3">
-                                <select name="provinsi_id" class="form-control">
+                                <select name="provinsi_id" id="province" class="form-control">
                                     <option value="">-- Provinsi --</option>
-                                    @foreach (\App\Event::latest()->get() as $key => $event)
-                                        <option value="{{ $event->id }}">{{ $event->event }}</option>
+                                    @foreach ($provinces ?? '' as $id => $name)
+                                        <option value="{{ $id }}">{{ $name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="input-group-prepend">
@@ -143,11 +145,8 @@
                         </div>
                         <div class="col">
                             <div class="input-group mb-3">
-                                <select name="kabupaten_kota_id" class="form-control">
+                                <select name="kabupaten_kota_id" id="city" class="form-control">
                                     <option value="">-- Kabupaten/Kota --</option>
-                                    @foreach (\App\Event::latest()->get() as $key => $event)
-                                        <option value="{{ $event->id }}">{{ $event->event }}</option>
-                                    @endforeach
                                 </select>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -163,7 +162,7 @@
                             <div class="input-group mb-3">
                                 <select name="event_id" class="form-control">
                                     <option value="">-- Pilih Event --</option>
-                                    @foreach (\App\Event::latest()->get() as $key => $event)
+                                    @foreach ($events as $event)
                                         <option value="{{ $event->id }}">{{ $event->event }}</option>
                                     @endforeach
                                 </select>
@@ -191,7 +190,7 @@
                     
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('Daftar') }}</button>
                         </div>
                     </div>
                 </form>
@@ -208,5 +207,23 @@
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.min.js"></script>
     <script src="/js/parsley.min.js"></script>
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            });
+            
+            $('#province').on('change', function () {
+                $.post('{{ route('getKabupatenKota') }}', {id: $(this).val()})
+                    .then(function (response) {
+                        $('#city').empty();
+
+                        $.each(response, function (id, name) {
+                            $('#city').append(new Option(name, id))
+                        })
+                    });
+            });
+        });
+    </script>
 </body>
 </html>
