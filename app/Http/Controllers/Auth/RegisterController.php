@@ -33,7 +33,12 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectTo() {
+        if (Auth::guard('web')) {
+            $this->redirectTo = route('client.index');
+            return $this->redirectTo;
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -54,9 +59,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'              => ['required', 'string', 'max:255'],
+            'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'          => ['required', 'string', 'min:6', 'confirmed'],
+            'jenis_kelamin'     => ['required'],
+            'event_id'          => ['required'],
+            'asal_sekolah'      => ['required', 'string'],
+            'kelas'             => ['required'],
+            'provinsi_id'       => ['required'],
+            'kabupaten_kota_id' => ['required'],
+            'alamat_tinggal'    => ['required', 'string'],
+            'no_telepon'        => ['required'],
         ]);
     }
 
@@ -68,7 +81,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $date = User::create([
             'name'              => $data['name'],
             'email'             => $data['email'],
             'password'          => Hash::make($data['password']),
@@ -80,22 +93,15 @@ class RegisterController extends Controller
             'kabupaten_kota_id' => $data['kabupaten_kota_id'],
             'alamat_tinggal'    => $data['alamat_tinggal'],
             'no_telepon'        => $data['no_telepon'],
-            'status'            => 0,
         ]);
     }
-
-    public function showRegistrationForm()
-    {
+    
+    public function showRegistrationForm() {
         return view('auth.register', [
             'events'    => Event::latest()->get(),
             'provinces' => Province::pluck('name', 'id'),
         ]);
     }
-
-    // public function getProvince() {
-    //     return view('auth.register', [
-    //     ]);
-    // }
 
     public function getKabupatenKota(Request $request) {
         $cities = City::where('province_id', $request->get('id'))

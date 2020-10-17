@@ -25,6 +25,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Event</th>
+                                <th>Tingkat</th>
                                 <th>Mulai</th>
                                 <th>Selesai</th>
                                 <th>Deskripsi</th>
@@ -65,6 +66,9 @@
                     }, {
                         data: 'event',
                         name: 'event'
+                    }, {
+                        data: 'tingkat',
+                        name: 'tingkat'
                     }, {
                         data: 'start_date',
                         name: 'start_date'

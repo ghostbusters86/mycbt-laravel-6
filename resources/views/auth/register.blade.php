@@ -29,7 +29,7 @@
         <div class="card card-primary card-outline">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register akun baru</p>
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="/client-register">
                 @csrf
                     <div class="row">
                         <div class="col">
@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="input-group mb-3">
-                                <select name="jenis_kelamin" class="form-control">
+                                <select name="jenis_kelamin" class="form-control" name="jenis_kelamin">
                                     <option value="" selected>-- Jenis Kelamin --</option>
                                     <option value="L">Pria</option>
                                     <option value="P">Wanita</option>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="No. Telp/WhatsApp">
+                                <input type="text" class="form-control" placeholder="No. Telp/WhatsApp" name="no_telepon">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-mobile-alt"></span>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Kelas (Hanya diisi 1-12. Contoh. 10)">
+                                <input type="text" class="form-control" placeholder="Kelas (Hanya diisi 1-12. Contoh. 10)" name="kelas">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-tasks"></span>
@@ -214,7 +214,7 @@
             });
             
             $('#province').on('change', function () {
-                $.post('{{ route('getKabupatenKota') }}', {id: $(this).val()})
+                $.post('{{ route('client.getKabupatenKota') }}', {id: $(this).val()})
                     .then(function (response) {
                         $('#city').empty();
 

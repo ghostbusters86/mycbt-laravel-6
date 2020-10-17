@@ -96,47 +96,22 @@ Route::name('admin.')
 
 
 // Client Side
-Route::group(['namespace' => 'Auth'], function () {
-    // Logout User
-    Route::post('/client/logout', 'LoginController@logoutUser')
-        ->name('logoutUser');
-
-    // Email verification for users
-    Route::get('email/verify', 'VerificationController@show')
-        ->name('verification.notice');
-    Route::get('email/verify/{id}', 'VerificationController@verify')
-        ->name('verification.verify');
-    Route::get('email/resend', 'VerificationController@resend')
-        ->name('verification.resend');
-
-    // Authentication Routes...
-    Route::get('login', 'LoginController@showLoginForm')
-        ->name('login');
-    Route::post('login', 'LoginController@login');
-    // Route::post('logout', 'LoginController@logout')
-        // ->name('logout');
-
-    // Registration Routes...
-    Route::get('register', 'RegisterController@showRegistrationForm')
-        ->name('register');
-    Route::post('register', 'RegisterController@register');
-    // Route::post('register', 'RegisterController@create')
-    Route::post('getKabupatenKota', 'RegisterController@getKabupatenKota')
-        ->name('getKabupatenKota');
-
-    // Password Reset Routes...
-    Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')
-        ->name('password.request');
-    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')
-        ->name('password.email');
-    Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')
-        ->name('password.reset');
-    Route::post('password/reset', 'ResetPasswordController@reset');
-});
+Auth::routes([
+    'verify'    => true,
+]);
 
 Route::name('client.')
     ->group(function () {
         Route::group(['namespace' => 'Auth'], function () {
+            Route::post('/logout', 'LoginController@logoutUser')
+                ->name('logoutUser');
+
+            Route::get('/client-register', 'RegisterController@showRegistrationForm')
+                ->name('showRegistrationForm');
+            Route::post('/client-kabupaten-kota', 'RegisterController@getKabupatenKota')
+                ->name('getKabupatenKota');
+            Route::post('/client-register', 'RegisterController@register')
+                ->name('register');
         });
 
         Route::group(['namespace' => 'Client', 'middleware' => ['auth:web', 'verified']], function () {

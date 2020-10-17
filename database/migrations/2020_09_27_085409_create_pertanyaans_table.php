@@ -15,12 +15,9 @@ class CreatePertanyaansTable extends Migration
     {
         Schema::create('pertanyaans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('mapel_id');
             $table->longText('pertanyaan');
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('mapel_id')->references('id')->on('mapels')->onDelete('cascade');
         });
     }
 

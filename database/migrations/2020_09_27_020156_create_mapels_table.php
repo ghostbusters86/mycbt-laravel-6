@@ -15,14 +15,11 @@ class CreateMapelsTable extends Migration
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('event_id');
             $table->string('mapel', 100);
             $table->string('kode_mapel', 20);
             $table->integer('waktu');
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

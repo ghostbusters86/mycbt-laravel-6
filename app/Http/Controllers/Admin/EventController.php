@@ -14,8 +14,8 @@ class EventController extends Controller
             $data = Event::latest()->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
-                    $button = '<button id="'.$data->id.'" class="edit btn btn-primary btn-flat btn-sm" title="Edit Event"><i class="fas fa-pencil-alt"></i></button>';
-                    $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="delete btn btn-flat btn-danger btn-sm" title="Hapus Event"><i class="fas fa-trash"></i></button>';
+                    $button = '<a href="#" id="'.$data->id.'" class="edit text-info" title="Edit Event"><i class="fas fa-pencil-alt"></i></a>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<a href="#" id="'.$data->id.'" class="delete text-danger" title="Hapus Event"><i class="fas fa-trash"></i></a>';
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -28,10 +28,11 @@ class EventController extends Controller
 
     public function tambahEvent(Request $request) {
         $form = [
-            'event' => $request->event,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'description' => $request->description,
+            'event'         => $request->event,
+            'tingkat'       => $request->tingkat,
+            'start_date'    => $request->start_date,
+            'end_date'      => $request->end_date,
+            'description'   => $request->description,
         ];
         $event = Event::create($form);
 
@@ -47,10 +48,11 @@ class EventController extends Controller
 
     public function updateEvent(Request $request, Event $event) {
         $form = [
-            'event' => $request->event,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'description' => $request->description,
+            'event'         => $request->event,
+            'tingkat'       => $request->tingkat,
+            'start_date'    => $request->start_date,
+            'end_date'      => $request->end_date,
+            'description'   => $request->description,
         ];
 
         $event = Event::whereId($request->hidden_id)->update($form);

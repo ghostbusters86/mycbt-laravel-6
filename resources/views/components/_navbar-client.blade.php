@@ -40,7 +40,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="index3.html" class="nav-link">
+                <a href="/client-dashboard" class="nav-link">
                     <i class="fas {{ Auth::user()->jenis_kelamin == 'L' ? 'fa-male' : 'fa-female' }}"></i>
                     {{ Auth::user()->name }}
                 </a>

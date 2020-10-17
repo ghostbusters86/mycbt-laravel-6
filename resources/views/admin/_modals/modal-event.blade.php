@@ -17,6 +17,17 @@
                                 <input type="text" name="event" id="event" class="form-control form-control-sm" placeholder="Event" data-parsley-error-message="Event tidak boleh kosong" required>
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="tingkat">Tingkat:</label>
+                                <select name="tingkat" id="tingkat" class="form-control">
+                                    <option value="">-- Pilih Tingkat --</option>
+                                    <option value="SD">siswa SD</option>
+                                    <option value="SMP">siswa SMP</option>
+                                    <option value="SMA">siswa SMA</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">

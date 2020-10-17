@@ -21,8 +21,8 @@ class Pertanyaan extends Model
         });
     }
 
-    public function mapel() {
-        return $this->belongsTo('App\Mapel', 'mapel_id', 'id');
+    public function mapels() {
+        return $this->belongsToMany('App\Mapel');
     }
 
     public function jawabans() {
