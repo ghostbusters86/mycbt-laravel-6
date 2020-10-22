@@ -14,10 +14,14 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="event_id">Pilih Event:</label>
-                                <select name="event_id" id="event_id" class="form-control form-control-sm" data-parsley-required-message="Event tidak boleh kosong">
-                                    <option value="">-- Pilih --</option>
+                                <select name="event_id[]" id="event_id" class="form-control form-control-sm chosen-select" data-parsley-required-message="Event tidak boleh kosong" multiple data-placeholder="Pilih Event">
+                                    <option value=""></option>
                                     @foreach ($events as $event)
-                                        <option value="{{ $event->id }}">{{ $event->event }}</option>
+                                        <optgroup label="{{ $event[0]['tingkat'] }}">
+                                            @foreach ($event as $ev)
+                                                <option value="{{ $ev->id }}">{{ $ev->event }}</option>
+                                            @endforeach
+                                        </optgroup>
                                     @endforeach
                                 </select>
                             </div>

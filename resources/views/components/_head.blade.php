@@ -20,3 +20,6 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <link rel="stylesheet" href="/css/sweetalert2.min.css">
 <link rel="stylesheet" href="/css/parsley.css">
+<link rel="stylesheet" href="/chosen/style.css">
+<link rel="stylesheet" href="/chosen/prism.css">
+<link rel="stylesheet" href="/chosen/chosen.css">

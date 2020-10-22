@@ -42,6 +42,14 @@
     @include('admin._modals.modal-mapel')
 @endsection
 
+@section('css')
+    <style>
+        .chosen-container{
+            width: 100% !important;
+        }
+    </style>
+@endsection
+
 @section('js')
     <script>
         $(document).ready(function () {
@@ -64,8 +72,8 @@
                         data: 'waktu',
                         name: 'waktu'
                     }, {
-                        data: 'event',
-                        name: 'event_id.event'
+                        data: 'events',
+                        name: 'events'
                     }, {
                         data: 'jlh_soal',
                         name: 'jlh_soal',
@@ -82,6 +90,7 @@
                 $('#modalMapelTitle').text('Tambah Mata Pelajaran Baru');
                 $('#action_button').val('Tambah');
                 $('#action').val('Add');
+                // $('#kode_soal').val(soalGen(6));
                 $('#modalMapel').modal('show');
             });
 
@@ -178,5 +187,15 @@
                     break;
             }
         @endif
+
+        // function soalGen(length) {
+        //     var result           = '';
+        //     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        //     var charactersLength = characters.length;
+        //     for ( var i = 0; i < length; i++ ) {
+        //         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        //     }
+        //     return result;
+        // }
     </script>
 @endsection

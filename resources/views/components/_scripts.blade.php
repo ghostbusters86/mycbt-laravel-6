@@ -1,4 +1,4 @@
-<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/chosen/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
@@ -14,3 +14,6 @@
 <script src="/plugins/toastr/toastr.min.js"></script>
 <script src="/js/sweetalert2.min.js"></script>
 <script src="/js/parsley.min.js"></script>
+<script src="/chosen/chosen.jquery.js" type="text/javascript"></script>
+<script src="/chosen/prism.js" type="text/javascript" charset="utf-8"></script>
+<script src="/chosen/init.js" type="text/javascript" charset="utf-8"></script>

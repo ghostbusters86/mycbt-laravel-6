@@ -7,22 +7,23 @@ use App\Mapel;
 use App\Pertanyaan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class MapelController extends Controller
 {
     public function index(Request $request) {
         if ($request->ajax()) {
-            $data = Mapel::with('event')->get();
+            $data = Mapel::with('events')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
-                    $button = '<a href="/admin/mapel/tambah-pertanyaan/'.$data->id.'" class="edit btn btn-warning btn-flat btn-sm" title="Buat Soal"><i class="fas fa-pen"></i></a>';
-                    $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="edit btn btn-primary btn-flat btn-sm" title="Edit Mata Pelajaran"><i class="fas fa-pencil-alt"></i></button>';
-                    $button .= '&nbsp;&nbsp;<button id="'.$data->id.'" class="delete btn btn-flat btn-danger btn-sm" title="Hapus Mata Pelajaran"><i class="fas fa-trash"></i></button>';
+                    $button = '<a href="/admin/mapel/tambah-pertanyaan/'.$data->id.'" class="text-success" title="Buat Soal"><i class="fas fa-pen"></i></a>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<a href="#" id="'.$data->id.'" class="edit text-info" title="Edit Mata Pelajaran"><i class="fas fa-pencil-alt"></i></a>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<a href="#" id="'.$data->id.'" class="delete text-danger" title="Hapus Mata Pelajaran"><i class="fas fa-trash"></i></a>';
                     return $button;
                 })
-                ->addColumn('event', function (Mapel $mapel) {
-                    return $mapel->event->event;
+                ->addColumn('events', function (Mapel $mapel) {
+                    return implode(', ', $mapel->events()->get()->pluck('event')->toArray());
                 })
                 ->addColumn('jlh_soal', function ($data) {
                     return $data->pertanyaans->count();
@@ -33,7 +34,7 @@ class MapelController extends Controller
         }
         
         return view('admin.mapel.mapel', [
-            'events' => Event::orderBy('event', 'asc')->get()
+            'events' => Event::all()->groupBy('tingkat')
         ]);
     }
 
@@ -42,14 +43,13 @@ class MapelController extends Controller
         $lastIncrement = substr($lastNumber, -3);
         $newNumber = 'MP'.str_pad($lastIncrement + 1, 3, 0, STR_PAD_LEFT);
 
-        $form = [
-            'event_id' => $request->event_id,
-            'mapel' => $request->mapel,
-            'waktu' => $request->waktu,
-            'kode_mapel' => $newNumber
-        ];
+        $mapel = Mapel::create([
+            'mapel'         => $request->mapel,
+            'waktu'         => $request->waktu,
+            'kode_mapel'    => $newNumber
+        ]);
 
-        $mapel = Mapel::create($form);
+        $mapel->events()->attach($request->event_id);
 
         return response()->json(['success' => 'Mapel di tambahkan']);
     }
@@ -63,9 +63,9 @@ class MapelController extends Controller
 
     public function updateMapel(Request $request, Mapel $mapel) {
         $form = [
-            'event_id' => $request->event_id,
-            'mapel' => $request->mapel,
-            'waktu' => $request->waktu
+            'event_id'  => $request->event_id,
+            'mapel'     => $request->mapel,
+            'waktu'     => $request->waktu
         ];
 
         $mapel = Mapel::whereId($request->hidden_id)->update($form);
