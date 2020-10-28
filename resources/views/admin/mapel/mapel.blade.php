@@ -130,6 +130,10 @@
                     url: '/admin/mapel/'+id,
                     dataType: 'JSON',
                     success: function(data) {
+                        // console.log(data.event.length);
+                        for (let i = 0; i < data.event.length; i++) {
+                            console.log(data.event[i]);
+                        }
                         $('#mapel').val(data.mapel.mapel);
                         $('#waktu').val(data.mapel.waktu);
                         $('#event_id').val(data.mapel.event_id);

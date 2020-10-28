@@ -57,7 +57,8 @@ class MapelController extends Controller
     public function edit($id) {
         if (request()->ajax()) {
             $mapel = Mapel::find($id);
-            return response()->json(['mapel' => $mapel]);
+            $events = $mapel->events()->get();
+            return response()->json(['mapel' => $mapel, 'event' => $events]);
         }
     }
 
